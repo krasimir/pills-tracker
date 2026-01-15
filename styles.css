@@ -51,7 +51,7 @@ main {
   padding: 0.2rem;
   width: 50px;
   text-align: center;
-  border: solid 1px #fff;
+  border: solid 1px #797979;
   cursor: pointer;
 }
 .time-slot:hover {
@@ -59,7 +59,8 @@ main {
 }
 .time-slot.taken {
   background-color: #4caf50;
-  color: #fff;
+  color: #000;
+  font-weight: bold;
 }
 .time-slot.taken:hover {
   background-color: #45a049;

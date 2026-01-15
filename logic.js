@@ -1,5 +1,6 @@
 const START_DATE = new Date("2026-01-14");
 const TODAY = new Date();
+const PERIOD_OF_INTAKE_DAYS = 31;
 
 const medicines = [
   { name: "Еманера", times: ["08:00", "-", "-"], desc: "1х1 / 30 min преди храна" },
@@ -10,7 +11,7 @@ const medicines = [
 ];
 
 window.addEventListener("load", () => {
-  const $main = $("main");
+  const $main = document.querySelector("main");
   const days = getDaysForOneMonth(START_DATE);
   const tables = [];
 
@@ -44,7 +45,6 @@ window.addEventListener("load", () => {
   });
   $main.innerHTML = tables.join("");
 });
-
 function onTimeSlotClick(element, key) {
   const data = localStorage.getItem(key);
   if (!data || data !== "taken") {
@@ -55,16 +55,11 @@ function onTimeSlotClick(element, key) {
     element.classList.remove("taken");
   }
 }
-
-// ... utilities
-function $(selector) {
-  return document.querySelector(selector);
-}
 function getDaysForOneMonth(startDate) {
   const date = new Date(startDate);
   const days = [];
   let i = 0;
-  while (i++ < 31) {
+  while (i++ < PERIOD_OF_INTAKE_DAYS) {
     days.push(new Date(date));
     date.setDate(date.getDate() + 1);
   }
